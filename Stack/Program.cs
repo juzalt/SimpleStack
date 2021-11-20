@@ -17,6 +17,7 @@ namespace Stack
         private object Pop()
         {
             object obj = stack.First();
+            stack.RemoveRange(0, 1);
             return obj;
         }
 
@@ -66,18 +67,22 @@ namespace Stack
                     Continue();
                     break;
                 case "U":
+                    Console.WriteLine("What do you want to push?");
                     obj = Console.ReadLine();
                     Push(obj);
                     break;
                 case "u":
+                    Console.WriteLine("What do you want to push?");
                     obj = Console.ReadLine();
                     Push(obj);
                     break;
                 case "push":
+                    Console.WriteLine("What do you want to push?");
                     obj = Console.ReadLine();
                     Push(obj);
                     break;
                 case "Push":
+                    Console.WriteLine("What do you want to push?");
                     obj = Console.ReadLine();
                     Push(obj);
                     break;
@@ -93,6 +98,18 @@ namespace Stack
                 case "C":
                     Clear();
                     break;
+                case "e":
+                    Exit();
+                    break;
+                case "E":
+                    Exit();
+                    break;
+                case "exit":
+                    Exit();
+                    break;
+                case "Exit":
+                    Exit();
+                    break;
                 default:
                     retryInput();
                     break;
@@ -106,10 +123,10 @@ namespace Stack
             checkInput(input);
         }
 
-        //private void Exit()
-        //{
-        //    Exit();
-        //}
+        private void Exit()
+        {
+            Environment.Exit(0);
+        }
 
         static void Main(string[] args)
         {
