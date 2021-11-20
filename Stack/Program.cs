@@ -1,23 +1,47 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Stack
 {
     class Program
     {
+        private List<object> stack;
+
         private void Push(object obj)
         {
-            //push
+            stack.Add(obj);
+            Continue();
         }
 
         private object Pop()
         {
-            object obj = new object();
+            object obj = stack.First();
             return obj;
+        }
+
+        private Boolean canPop()
+        {
+            object obj = stack.First();
+            return obj != null; 
         }
 
         private void Clear()
         {
             // clear
+        }
+
+        private void Continue()
+        {
+            Console.WriteLine("What else do you want to do?");
+            string input = Console.ReadLine();
+            checkInput(input);
+        }
+
+        private void AlertStackIsEmpty()
+        {
+            Console.WriteLine("The stack is empty.");
+            Continue();
         }
 
         private void checkInput(string input)
@@ -26,16 +50,20 @@ namespace Stack
             switch (input)
             {
                 case "pop":
-                    Pop();
+                    if (canPop()) { Pop(); } else { AlertStackIsEmpty(); }
+                    Continue();
                     break;
                 case "Pop":
-                    Pop();
+                    if (canPop()) { Pop(); } else { AlertStackIsEmpty(); }
+                    Continue();
                     break;
                 case "o":
-                    Pop();
+                    if (canPop()) { Pop(); } else { AlertStackIsEmpty(); }
+                    Continue();
                     break;
                 case "O":
-                    Pop();
+                    if (canPop()) {Pop();} else {AlertStackIsEmpty();}
+                    Continue();
                     break;
                 case "U":
                     obj = Console.ReadLine();
@@ -73,19 +101,22 @@ namespace Stack
 
         private void retryInput()
         {
-            Console.WriteLine("It's Pop, push or clear, buddy...");
+            Console.WriteLine("It's pop, push, clear or exit.");
             String input = Console.ReadLine();
             checkInput(input);
         }
 
+        //private void Exit()
+        //{
+        //    Exit();
+        //}
+
         static void Main(string[] args)
         {
             Program p = new Program();
-            Console.WriteLine("Hello there! What would you like to do? Your options are P(o)p, P(u)sh and (C)lear.");
+            Console.WriteLine("Hello there! What would you like to do? Your options are P(o)p, P(u)sh and (C)lear. You can also (E)xit.");
             String input = Console.ReadLine();
             p.checkInput(input);
-
-
         }
     }
 }
