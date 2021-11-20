@@ -6,7 +6,7 @@ namespace Stack
 {
     class Program
     {
-        private List<object> stack;
+        private List<object> stack = new List<object>();
 
         private void Push(object obj)
         {
@@ -22,13 +22,13 @@ namespace Stack
 
         private Boolean canPop()
         {
-            object obj = stack.First();
-            return obj != null; 
+            return stack.Count != 0;
         }
 
         private void Clear()
         {
-            // clear
+            stack.Clear();
+            Continue();
         }
 
         private void Continue()
@@ -50,19 +50,19 @@ namespace Stack
             switch (input)
             {
                 case "pop":
-                    if (canPop()) { Pop(); } else { AlertStackIsEmpty(); }
+                    if (canPop()) { Console.WriteLine(Pop()); } else { AlertStackIsEmpty(); }
                     Continue();
                     break;
                 case "Pop":
-                    if (canPop()) { Pop(); } else { AlertStackIsEmpty(); }
+                    if (canPop()) { Console.WriteLine(Pop()); } else { AlertStackIsEmpty(); }
                     Continue();
                     break;
                 case "o":
-                    if (canPop()) { Pop(); } else { AlertStackIsEmpty(); }
+                    if (canPop()) { Console.WriteLine(Pop()); } else { AlertStackIsEmpty(); }
                     Continue();
                     break;
                 case "O":
-                    if (canPop()) {Pop();} else {AlertStackIsEmpty();}
+                    if (canPop()) { Console.WriteLine(Pop()); } else {AlertStackIsEmpty();}
                     Continue();
                     break;
                 case "U":
